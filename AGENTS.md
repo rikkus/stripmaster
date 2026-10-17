@@ -29,6 +29,10 @@ xcodebuild -project Stripmaster.xcodeproj -scheme Stripmaster \
 
 `build-for-testing` is enough to verify that the UI test bundle compiles.
 
+The macOS app accepts `--new-document` (create an untitled board at launch) and
+`--ui-testing` (also disables scene restoration). They exist for the UI smoke
+tests and for launching a board directly during development.
+
 ## Constraints
 
 - Everything in `Stripmaster/Model/` must remain free of SwiftUI. It is compiled
