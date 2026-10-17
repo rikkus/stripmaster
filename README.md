@@ -20,7 +20,8 @@ joints and tracks are visible.
 - **Top and bottom views** — the component side is shown first. The toolbar
   flip button shows the mirrored copper side, including tracks, drilled holes,
   component pin tips and solder joints, so it is obvious where to cut and what
-  passes through where.
+  passes through where. Parts and jumpers live on the top side; choosing those
+  tools while on the copper side flips back automatically.
 - **Fit and rotate** — fit the board to the window, rotate in 90° steps, and
   pan/zoom like a normal canvas app.
 - **A real component palette** — 74 parts in 13 groups, with bold hand-drawn

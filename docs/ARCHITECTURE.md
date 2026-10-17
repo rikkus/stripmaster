@@ -199,6 +199,12 @@ Gestures:
   board (unless Command is held)
 - a pinch cancels any in-progress tool drag; the drag's end is ignored
 
+Top-side objects are not editable from the copper view. Selecting a placement or
+jumper tool while the bottom is shown flips to the top; flipping to the bottom
+clears a part selection, switches placement/jumper tools to Cut, and suppresses
+component hit testing. The back is for inspecting tracks/pins and for cuts and
+solder joints.
+
 The top toolbar carries Fit/Rotate/Flip (and undo/redo on macOS). Tools live in
 the floating bottom strip. On compact iOS the palette becomes a sheet and the
 status area collapses around it.

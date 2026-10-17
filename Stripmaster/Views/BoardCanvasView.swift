@@ -182,7 +182,8 @@ struct BoardCanvasView: View {
 
         switch tool {
         case .select:
-            if let component = component(at: location, transform: transform) {
+            if document.view.side == .top,
+               let component = component(at: location, transform: transform) {
                 selectedComponentID = component.id
                 active = .move(original: component, startPoint: location, candidate: component)
                 preview = .component(component, valid: true)
@@ -202,7 +203,8 @@ struct BoardCanvasView: View {
             preview = .paint(tool: tool, holes: [hole])
 
         case .jumper(let kind):
-            guard let hole = transform.hole(at: location, tolerance: 0.6),
+            guard document.view.side == .top,
+                  let hole = transform.hole(at: location, tolerance: 0.6),
                   var draft = JumperDraft(kind: kind, start: hole, dimensions: board.dimensions)
             else { return }
             draft.move(to: hole)
@@ -210,7 +212,8 @@ struct BoardCanvasView: View {
             preview = .jumper(kind: kind, route: draft.path)
 
         case .place(let reference):
-            guard let spec = ComponentCatalogue.spec(for: reference),
+            guard document.view.side == .top,
+                  let spec = ComponentCatalogue.spec(for: reference),
                   let hole = transform.hole(at: location, tolerance: 0.75)
             else { return }
             let candidate = PlacedComponent.autoPlaced(

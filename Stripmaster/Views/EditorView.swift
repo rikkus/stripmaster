@@ -63,6 +63,17 @@ struct EditorView: View {
                 self.selectedComponentID = nil
             }
         }
+        .onChange(of: document.view.side) { _, side in
+            guard side == .bottom else { return }
+            // Component-side objects are not visible from the copper side, so
+            // do not leave a selector or placement tool armed when flipping.
+            if selectedComponentID != nil {
+                selectedComponentID = nil
+            }
+            if tool.jumperKind != nil || tool.placementSpec != nil {
+                tool = .cut
+            }
+        }
         .onChange(of: tool) { _, newTool in
             if !newTool.isSelectionTool, newTool.placementSpec == nil {
                 selectedComponentID = nil
